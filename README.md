@@ -7,4 +7,5 @@ A desktop application for generating fantasy maps for table top role playing gam
         - Number of octaves
         - Amplitude of shape (persistence)
         - Frequency of detail (lacunarity)
+        - Seed value from random.random()
     - Day / Night Color Palets

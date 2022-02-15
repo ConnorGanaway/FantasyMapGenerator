@@ -18,6 +18,8 @@ A desktop application for generating fantasy maps for table top role playing gam
         - asks for input file from user
         - file format is json
 
+- Version 0.2.1
+    - Only update here is the development enviroment being setup
 
 - Currently Working On:
     - Option to mask the map from a shape

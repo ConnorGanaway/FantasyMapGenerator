@@ -7,4 +7,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="example_map.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IronPython" Version="2.7.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="example_map.PNG" />
+  </ItemGroup>
+
 </Project>

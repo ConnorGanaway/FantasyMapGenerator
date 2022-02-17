@@ -7,8 +7,13 @@
         mc:Ignorable="d"
         Title="FantasyMapGenerator" Height="450" Width="800">
     <Grid>
-        <Label Name="LabelOne" Content="Test Label" FontSize="20" Visibility="Hidden" HorizontalAlignment="Center" Margin="0,204,0,0" VerticalAlignment="Top" Height="46" Width="114"/>
-        <Button Content="Show Label" Click="Button_Click" HorizontalAlignment="Left" Margin="148,204,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="682*"/>
+            <ColumnDefinition Width="117*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Generate" Click="Button_Click" HorizontalAlignment="Left" Margin="60,375,0,0" VerticalAlignment="Top" Grid.Column="1" Height="34" Width="260"/>
+        <Image x:Name="MapView" Visibility="Visible" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="389" Margin="399,21,0,0" VerticalAlignment="Top" Width="383" RenderTransformOrigin="0.502,0.525" Source="/example_map.PNG"/>
 
     </Grid>
 </Window>

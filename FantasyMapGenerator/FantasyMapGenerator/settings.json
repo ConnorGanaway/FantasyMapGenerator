@@ -1,0 +1,9 @@
+{
+	"size":"500",
+	"scale":"100.0",
+	"octaves":"6",
+	"persistence":"0.5",	
+	"lacunarity":"1.75",
+	"day":"1",
+	"seed":"random_seed_value"
+}

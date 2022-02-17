@@ -21,7 +21,16 @@ A desktop application for generating fantasy maps for table top role playing gam
 - Version 0.2.1
     - Only update here is the development enviroment being setup
 
-- Currently Working On:
+- Version 0.2.2
+    - First attempt to have c# call the python script
+        - Need to switch from IronPython Library(Does not work with Python3)
+    - Static Image used as a placeholder for where the generated maps will go
+    - Placeholder "Generate" button (Non functional at the moment)
+
+- To-Do List:
+    - Add More Buttons / Sliders / Checkboxes in the Window
+    - Add seed value based input
+    - Address Resizing of Window
     - Option to mask the map from a shape
     - More detail generation
         - Wavey water

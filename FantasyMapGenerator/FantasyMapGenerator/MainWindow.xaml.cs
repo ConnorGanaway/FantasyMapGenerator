@@ -30,7 +30,7 @@ namespace FantasyMapGenerator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             if (MapView.Visibility == Visibility.Hidden)
             {
                 MapView.Visibility = Visibility.Visible;
@@ -39,41 +39,70 @@ namespace FantasyMapGenerator
             {
                 MapView.Visibility = Visibility.Hidden;
             }
-            */
+            
+        }
 
-            var engine = Python.CreateEngine();
-            // Path to Python interpreter, Generation Script, and Settings File
-            //var python = @"C:\Users\Connor Ganaway\AppData\Local\Microsoft\WindowsApps\python3.exe";
-            var pythonScript = @"C:\Users\Connor Ganaway\Desktop\Senior Capstone\FantasyMapGenerator\FantasyMapGenerator\FantasyMapGenerator\noise_gen.py";
-            var settingsFile = @"C:\Users\Connor Ganaway\Desktop\Senior Capstone\FantasyMapGenerator\FantasyMapGenerator\FantasyMapGenerator\settings.json";
+        //Size Input
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
 
-            var source = engine.CreateScriptSourceFromFile(pythonScript);
+        }
 
-            var argv = new List<string>();
-            argv.Add("");
-            argv.Add(settingsFile);
+        //Seed Input
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
-            engine.GetSysModule().SetVariable("argv", argv);
+        }
 
-            var eIO = engine.Runtime.IO;
+        //Night Time Mode
+        private void DarkMode_Checked(object sender, RoutedEventArgs e)
+        {
 
-            var errors = new MemoryStream();
-            eIO.SetErrorOutput(errors, Encoding.Default);
+        }
 
-            var results = new MemoryStream();
-            eIO.SetOutput(results, Encoding.Default);
+        //Generate Paths
+        private void Paths_Checked(object sender, RoutedEventArgs e)
+        {
 
-            var scope = engine.CreateScope();
-            source.Execute(scope);
+        }
 
-            string str(byte[] x) => Encoding.Default.GetString(x);
+        //TBD Generation Option
+        private void CheckBox_Checked_3(object sender, RoutedEventArgs e)
+        {
+            scale.Value = 5;
+            octaves.Value = 5;  
+            persistence.Value = 5;
+            lacunarity.Value = 5;
+        }
 
-            Console.WriteLine("ERRORS");
-            Console.WriteLine(str(errors.ToArray()));
-            Console.WriteLine();
-            Console.WriteLine("RESULTS");
-            Console.WriteLine(str(results.ToArray()));
-            Console.WriteLine();
+        //TBD Generation Option
+        private void CheckBox_Checked_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Slider for scale
+        private void scale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
+        }
+
+        //Slider for octaves
+        private void octaves_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        //Slider for persistence
+        private void persistence_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        //Slider for lacunarity
+        private void lacunarity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

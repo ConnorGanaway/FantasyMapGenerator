@@ -24,15 +24,28 @@ A desktop application for generating fantasy maps for table top role playing gam
 - Version 0.2.2
     - First attempt to have c# call the python script
         - Need to switch from IronPython Library(Does not work with Python3)
+        - Will return to this later
     - Static Image used as a placeholder for where the generated maps will go
     - Placeholder "Generate" button (Non functional at the moment)
 
+- Version 0.3
+    - Basic GUI layout (Subject to change)
+        - Size / Seed Input has to functionality yet
+        - The 4 sliders are binded to a label to show their current value (These represent the values for the simplex noise function)
+        - Checkboxs
+            - Dark Mode
+            - Generate Paths
+            - TBD feature 3 (Currently being used as reset for the sliders)
+            - TBD feature 4
+    - Clicking the Genrate Button will only show and hide a default image
+        - This will be replace with the script later
+
 - To-Do List:
-    - Add More Buttons / Sliders / Checkboxes in the Window
-    - Add seed value based input
+    - Adjust the ranges for the sliders
+    - Write these values to a json file for the python script
     - Address Resizing of Window
-    - Option to mask the map from a shape
     - More detail generation
+        - Creating Paths
         - Wavey water
         - Tree Placemnet
 

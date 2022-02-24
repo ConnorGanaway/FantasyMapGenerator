@@ -1,32 +1,18 @@
 # FantasyMapGenerator
 A desktop application for generating fantasy maps for table top role playing games.
 
-- Version 0.1:
-    - Simplex Noise Generation
-    - 4 levels of Randomness
-        - Number of octaves
-        - Amplitude of shape (persistence)
-        - Frequency of detail (lacunarity)
-        - Seed value from random.random()
-    - Day / Night Color Palets
+- To-Do List:
+    - Call the python script from the generate button
+    - Address Resizing of Window
+    - More detail generation
+        - Creating Paths
+        - Wavey water
+        - Tree Placement
 
-- Version 0.2:
-    - Added Mountains / Snow Regions to Generation
-    - Refactored range for color placement
-    - Updated some comments for better descriptions
-    - Switched to file input for generation settings
-        - asks for input file from user
-        - file format is json
-
-- Version 0.2.1:
-    - Only update here is the development enviroment being setup
-
-- Version 0.2.2:
-    - First attempt to have c# call the python script
-        - Need to switch from IronPython Library(Does not work with Python3)
-        - Will return to this later
-    - Static Image used as a placeholder for where the generated maps will go
-    - Placeholder "Generate" button (Non functional at the moment)
+- Version 0.4:
+    - Adjusted the proper ranges for the sliders
+    - When generated is clicked it writes the infomration to a json file
+    - If no seed value is given, a random 16 character phrase is generated in its place
 
 - Version 0.3:
     - Basic GUI layout (Subject to change)
@@ -40,16 +26,40 @@ A desktop application for generating fantasy maps for table top role playing gam
     - Clicking the Genrate Button will only show and hide a default image
         - This will be replace with the script later
 
-- Version 0.4:
-    - Adjusted the proper ranges for the sliders
-    - When generated is clicked it writes the infomration to a json file
-    - If no seed value is given, a random 16 character phrase is generated in its place
+- Version 0.2.2:
+    - First attempt to have c# call the python script
+        - Need to switch from IronPython Library(Does not work with Python3)
+        - Will return to this later
+    - Static Image used as a placeholder for where the generated maps will go
+    - Placeholder "Generate" button (Non functional at the moment)
 
-- To-Do List:
-    - Call the python script from the generate button
-    - Address Resizing of Window
-    - More detail generation
-        - Creating Paths
-        - Wavey water
-        - Tree Placemnet
+- Version 0.2.1:
+    - Only update here is the development enviroment being setup
+
+- Version 0.2:
+    - Added Mountains / Snow Regions to Generation
+    - Refactored range for color placement
+    - Updated some comments for better descriptions
+    - Switched to file input for generation settings
+        - asks for input file from user
+        - file format is json
+
+- Version 0.1:
+    - Simplex Noise Generation
+    - 4 levels of Randomness
+        - Number of octaves
+        - Amplitude of shape (persistence)
+        - Frequency of detail (lacunarity)
+        - Seed value from random.random()
+    - Day / Night Color Palets
+
+
+
+
+
+
+
+
+
+
 

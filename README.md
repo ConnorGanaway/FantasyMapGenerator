@@ -11,7 +11,7 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 - Version 0.4:
     - Adjusted the proper ranges for the sliders
-    - When generated is clicked it writes the infomration to a json file
+    - When generated is clicked it writes the information to a json file
     - If no seed value is given, a random 16 character phrase is generated in its place
 
 - Version 0.3:

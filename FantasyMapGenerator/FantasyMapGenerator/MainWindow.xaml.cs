@@ -80,67 +80,13 @@ namespace FantasyMapGenerator
 
         }
 
-        //Size Input
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        //Seed Input
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        //Night Time Mode
-        private void DarkMode_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //Generate Paths
-        private void Paths_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //TBD Generation Option
+        //TBD Generation Option (This is being used as a reset button for the values at the moment
         private void CheckBox_Checked_3(object sender, RoutedEventArgs e)
         {
             scale.Value = 100;
             octaves.Value = 7;  
             persistence.Value = 0.5;
             lacunarity.Value = 1.5;
-        }
-
-        //TBD Generation Option
-        private void CheckBox_Checked_4(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //Slider for scale
-        private void scale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
-        //Slider for octaves
-        private void octaves_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        //Slider for persistence
-        private void persistence_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        //Slider for lacunarity
-        private void lacunarity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
         }
     }
 }

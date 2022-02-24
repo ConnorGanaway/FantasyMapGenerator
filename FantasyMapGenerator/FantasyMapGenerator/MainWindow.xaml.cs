@@ -69,10 +69,10 @@ namespace FantasyMapGenerator
         //TBD Generation Option
         private void CheckBox_Checked_3(object sender, RoutedEventArgs e)
         {
-            scale.Value = 5;
-            octaves.Value = 5;  
-            persistence.Value = 5;
-            lacunarity.Value = 5;
+            scale.Value = 100;
+            octaves.Value = 7;  
+            persistence.Value = 0.5;
+            lacunarity.Value = 1.5;
         }
 
         //TBD Generation Option

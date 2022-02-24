@@ -32,19 +32,23 @@
         <CheckBox x:Name="TBD1" Grid.Column="2" Content="TBD" HorizontalAlignment="Left" Margin="85,64,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked_3" Grid.ColumnSpan="2" Grid.Row="1"/>
         <CheckBox x:Name="TBD2" Grid.Column="3" Content="TBD" HorizontalAlignment="Left" Margin="150,64,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked_4" Grid.Row="1"/>
 
-        <Slider x:Name="scale" Value="5" Maximum="10" Grid.Column="2" HorizontalAlignment="Left" Margin="85,105,0,0" VerticalAlignment="Top" Width="260" ValueChanged="scale_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Slider x:Name="octaves" Value="5" Maximum="10" Grid.Column="2" HorizontalAlignment="Left" Margin="85,155,0,0" VerticalAlignment="Top" Width="260" ValueChanged="octaves_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Slider x:Name="persistence" Value="5" Maximum="10" Grid.Column="2" HorizontalAlignment="Left" Margin="85,205,0,0" VerticalAlignment="Top" Width="260" ValueChanged="persistence_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Slider x:Name="lacunarity" Value="5" Maximum="10" Grid.Column="2" HorizontalAlignment="Left" Margin="85,255,0,0" VerticalAlignment="Top" Width="260" ValueChanged="lacunarity_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Slider x:Name="scale" Value="100" Minimum="0" Maximum="200" Grid.Column="2" HorizontalAlignment="Left" Margin="85,105,0,0" VerticalAlignment="Top" Width="260" ValueChanged="scale_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Slider x:Name="octaves" Value="7" Minimum="2" Maximum="12" Grid.Column="2" HorizontalAlignment="Left" Margin="85,155,0,0" VerticalAlignment="Top" Width="260" ValueChanged="octaves_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Slider x:Name="persistence" Value="0.5" Minimum="0" Maximum="1" Grid.Column="2" HorizontalAlignment="Left" Margin="85,205,0,0" VerticalAlignment="Top" Width="260" ValueChanged="persistence_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Slider x:Name="lacunarity" Value="1.5" Minimum="1" Maximum="2" Grid.Column="2" HorizontalAlignment="Left" Margin="85,255,0,0" VerticalAlignment="Top" Width="260" ValueChanged="lacunarity_ValueChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
 
         <Label x:Name="ScaleValue" Grid.Column="3" Content="{Binding ElementName=scale, Path=Value}" HorizontalAlignment="Left" Margin="245,105,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="OctavesValue" Grid.Column="3" Content="{Binding ElementName=octaves, Path=Value}" HorizontalAlignment="Left" Margin="245,155,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="PersistenceValue" Grid.Column="3" Content="{Binding ElementName=persistence, Path=Value}" HorizontalAlignment="Left" Margin="245,205,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="LacunarityValue" Grid.Column="3" Content="{Binding ElementName=lacunarity, Path=Value}" HorizontalAlignment="Left" Margin="245,255,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        
+
         <Button Content="Generate" Click="Button_Click" HorizontalAlignment="Left" Margin="85,320,0,0" VerticalAlignment="Top" Grid.Column="2" Height="34" Width="260" Grid.ColumnSpan="2" FontSize="24" FontFamily="Segoe UI" Grid.Row="1"/>
 
         <Image x:Name="MapView" Visibility="Hidden" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="500" Margin="300,20,0,0" VerticalAlignment="Top" Width="500" RenderTransformOrigin="0.502,0.525" Source="/example_map.PNG" Grid.RowSpan="2"/>
-        
+        <Label x:Name="ScaleName" Grid.Column="3" Content="Scale" HorizontalAlignment="Left" Margin="70,75,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="OctavesName" Grid.Column="3" Content="Octaves" HorizontalAlignment="Left" Margin="65,125,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="PersistenceName" Grid.Column="3" Content="Persistence" HorizontalAlignment="Left" Margin="60,175,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="LacunarityName" Grid.Column="3" Content="Lacunarity" HorizontalAlignment="Left" Margin="60,225,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

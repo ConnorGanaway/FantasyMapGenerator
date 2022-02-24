@@ -18,17 +18,17 @@ A desktop application for generating fantasy maps for table top role playing gam
         - asks for input file from user
         - file format is json
 
-- Version 0.2.1
+- Version 0.2.1:
     - Only update here is the development enviroment being setup
 
-- Version 0.2.2
+- Version 0.2.2:
     - First attempt to have c# call the python script
         - Need to switch from IronPython Library(Does not work with Python3)
         - Will return to this later
     - Static Image used as a placeholder for where the generated maps will go
     - Placeholder "Generate" button (Non functional at the moment)
 
-- Version 0.3
+- Version 0.3:
     - Basic GUI layout (Subject to change)
         - Size / Seed Input has to functionality yet
         - The 4 sliders are binded to a label to show their current value (These represent the values for the simplex noise function)
@@ -40,9 +40,13 @@ A desktop application for generating fantasy maps for table top role playing gam
     - Clicking the Genrate Button will only show and hide a default image
         - This will be replace with the script later
 
+- Version 0.4:
+    - Adjusted the proper ranges for the sliders
+    - When generated is clicked it writes the infomration to a json file
+    - If no seed value is given, a random 16 character phrase is generated in its place
+
 - To-Do List:
-    - Adjust the ranges for the sliders
-    - Write these values to a json file for the python script
+    - Call the python script from the generate button
     - Address Resizing of Window
     - More detail generation
         - Creating Paths

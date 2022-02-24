@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Diagnostics;
-using IronPython.Hosting;
+using Newtonsoft.Json;
 
 namespace FantasyMapGenerator
 {
@@ -39,7 +39,45 @@ namespace FantasyMapGenerator
             {
                 MapView.Visibility = Visibility.Hidden;
             }
-            
+
+            string tempSize = SizeInput.Text;
+            if (tempSize == "")
+            {
+                tempSize = "500";
+            }
+           
+
+            double tempScale = scale.Value;
+            double tempOctaves = octaves.Value;
+            double tempPersistence = persistence.Value;
+            double tempLacunarity = lacunarity.Value;
+
+            int tempDarkMode = 1;
+            if (DarkMode.IsChecked == true)
+            {
+                tempDarkMode = 0;
+            }
+
+            string tempSeed = SeedInput.Text;
+            if (tempSeed == "")
+            {
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                var stringChars = new char[16];
+                var random = new Random();
+
+                for (int i = 0; i < stringChars.Length; i++)
+                {
+                    stringChars[i] = chars[random.Next(chars.Length)];
+                }
+
+                tempSeed = new String(stringChars);
+            }
+
+
+            string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
+
+            File.WriteAllTextAsync("settingsTemp.json", str);
+
         }
 
         //Size Input

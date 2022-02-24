@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <PackageReference Include="IronPython" Version="2.7.12" />
+    <PackageReference Include="Json.Net" Version="1.0.33" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>

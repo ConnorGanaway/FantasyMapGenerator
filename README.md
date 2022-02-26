@@ -1,7 +1,7 @@
 # FantasyMapGenerator
 A desktop application for generating fantasy maps for table top role playing games.
 
-[![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)]
+![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
 - Version 0.4:
     - Adjusted the proper ranges for the sliders

@@ -10,7 +10,7 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 - Version 0.3:
     - Basic GUI layout (Subject to change)
-        - Size / Seed Input has to functionality yet
+        - Size / Seed Input has no functionality yet
         - The 4 sliders are binded to a label to show their current value (These represent the values for the simplex noise function)
         - Checkboxs
             - Dark Mode

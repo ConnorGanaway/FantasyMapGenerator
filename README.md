@@ -1,14 +1,6 @@
 # FantasyMapGenerator
 A desktop application for generating fantasy maps for table top role playing games.
 
-- To-Do List:
-    - Call the python script from the generate button
-    - Address Resizing of Window
-    - More detail generation
-        - Creating Paths
-        - Wavey water
-        - Tree Placement
-
 - Version 0.4:
     - Adjusted the proper ranges for the sliders
     - When generated is clicked it writes the information to a json file

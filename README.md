@@ -3,6 +3,12 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
+- Version 0.5
+    - Desktop App now interfaces with the Python Script
+    - Newly generated map is launching in a seperate window
+    - Seed input is now factored into the script
+        - Not fully idependent of the computer seed yet (Need to create toggle when user input is gathered)
+
 - Version 0.4:
     - Adjusted the proper ranges for the sliders
     - When generated is clicked it writes the information to a json file

@@ -38,13 +38,14 @@ if __name__ == "__main__":
     with open(settingsFile, 'r') as f:
         data = json.load(f)
 
-    user_seed = str(data["seed"])
+    
     size = int(data["size"])
     scale = float(data["scale"])
     octaves = int(data["octaves"])
     persistence = float(data["persistence"])
     lacunarity = float(data["lacunarity"])
     day = int(data["day"])
+    user_seed = str(data["seed"])
 
     # Debug Statements
     print("Size: ",size)
@@ -60,9 +61,12 @@ if __name__ == "__main__":
 
     # The noise function (snoise2) does not randomize without this value!
     # The option for the user to choose this value will come later
-    seed = random.random()
-    print("Computer Seed: ", seed)
+    computer_seed = random.random()
+    print("Computer Seed: ", computer_seed)
 
+    print("hash: ", hash(user_seed))
+    final_seed = hash(user_seed) * computer_seed * pow(10, -18)
+    print("hash: ", final_seed)
 
     #Create a new blank image and save the pixels
     img  = Image.new( mode = "RGB", size = (int(size), int(size)), color = (0, 0, 0) )
@@ -73,7 +77,7 @@ if __name__ == "__main__":
         for j in range(int(size)):
 
             #Range is -0.5 <= x <= 0.5 floating point value
-            noiseValue = noise.snoise2(i/scale, j/scale, octaves=octaves, persistence=persistence, lacunarity=lacunarity, repeatx=size, repeaty=size, base=seed)
+            noiseValue = noise.snoise2(i/scale, j/scale, octaves=octaves, persistence=persistence, lacunarity=lacunarity, repeatx=size, repeaty=size, base=final_seed)
             
             # Based on the value generate and color the pixel accordingly
             if noiseValue < -0.0275:

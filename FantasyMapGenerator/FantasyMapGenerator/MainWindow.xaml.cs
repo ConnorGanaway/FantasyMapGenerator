@@ -78,6 +78,12 @@ namespace FantasyMapGenerator
 
             File.WriteAllTextAsync("settingsTemp.json", str);
 
+
+            System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c python3 ../../../noise_gen.py settingsTemp.json");
+            procStartInfo.CreateNoWindow = true;
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo = procStartInfo;
+            proc.Start();
         }
 
         //TBD Generation Option (This is being used as a reset button for the values at the moment
@@ -87,6 +93,51 @@ namespace FantasyMapGenerator
             octaves.Value = 7;  
             persistence.Value = 0.5;
             lacunarity.Value = 1.5;
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DarkMode_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Paths_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Checked_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void scale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void octaves_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void persistence_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void lacunarity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

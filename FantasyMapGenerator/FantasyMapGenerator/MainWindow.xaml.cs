@@ -79,8 +79,8 @@ namespace FantasyMapGenerator
             File.WriteAllTextAsync("settingsTemp.json", str);
 
 
-            System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c python3 ../../../noise_gen.py settingsTemp.json");
-            procStartInfo.CreateNoWindow = true;
+            System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/k python3 ../../../../../noise_gen.py settingsTemp.json");
+            procStartInfo.CreateNoWindow = false;
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo = procStartInfo;
             proc.Start();

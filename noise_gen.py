@@ -1,3 +1,4 @@
+from webbrowser import BackgroundBrowser
 from PIL import Image, ImageFilter
 import noise
 import numpy as np
@@ -20,6 +21,52 @@ nightMountain = (50, 50, 50)
 
 daySnow = (255, 255, 255)
 nightSnow = (105, 105, 105)
+
+wood = (140, 98, 56)
+leaves = (140, 198, 62)
+
+def addTrees(img):
+
+    pixels = img.load()
+
+    #for i in range(int(size)):
+    #    for j in range(int(size)):
+    print()
+    i = 50
+    j = 50
+
+    if pixels[i, j] == dayLand:
+
+        pixels[i, j] = wood
+        pixels[i, j+1] = wood
+        pixels[i, j+2] = wood
+        pixels[i, j+3] = wood
+        pixels[i, j+4] = wood
+        pixels[i, j+5] = wood
+        pixels[i, j+6] = wood
+        pixels[i+2, j+2] = wood
+        pixels[i-2, j+2] = wood
+        pixels[i+1, j+3] = wood
+        pixels[i-1, j+3] = wood
+
+        pixels[i+1, j+1] = leaves
+        pixels[i+2, j+1] = leaves
+        pixels[i+3, j+1] = leaves
+        pixels[i-1, j+1] = leaves
+        pixels[i-2, j+1] = leaves
+        pixels[i-3, j+1] = leaves
+        pixels[i+1, j] = leaves
+        pixels[i+2, j] = leaves
+        pixels[i-1, j] = leaves
+        pixels[i-2, j] = leaves
+        pixels[i, j-1] = leaves
+        pixels[i+1, j-1] = leaves
+        pixels[i+2, j-1] = leaves
+        pixels[i-1, j-1] = leaves
+        pixels[i-2, j-1] = leaves
+        pixels[i, j-2] = leaves
+        pixels[i+1, j-2] = leaves
+        pixels[i-1, j-2] = leaves
 
 
 if __name__ == "__main__":
@@ -106,5 +153,7 @@ if __name__ == "__main__":
                 else:
                     pixels[i, j] = nightSnow
 
-    #View the Image  
+    #View the Image
+    addTrees(img)
+    img.save("../../../new_map.png", "PNG")  
     img.show()

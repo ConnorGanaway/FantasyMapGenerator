@@ -4,7 +4,7 @@ A desktop application for generating fantasy maps for table top role playing gam
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
 - Version 0.6
-    - Function to add a single 
+    - Function to add a single Tree
 
 - Version 0.5
     - Desktop App now interfaces with the Python Script

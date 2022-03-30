@@ -25,48 +25,56 @@ nightSnow = (105, 105, 105)
 wood = (140, 98, 56)
 leaves = (140, 198, 62)
 
-def addTrees(img):
+def addTrees(img, size, x, y, treeCounter):
 
     pixels = img.load()
+    isValid = True
 
-    #for i in range(int(size)):
-    #    for j in range(int(size)):
-    print()
-    i = 50
-    j = 50
+    x = x - 1
+    y = y - 1
 
-    if pixels[i, j] == dayLand:
+    if treeCounter % 30 == 0:
 
-        pixels[i, j] = wood
-        pixels[i, j+1] = wood
-        pixels[i, j+2] = wood
-        pixels[i, j+3] = wood
-        pixels[i, j+4] = wood
-        pixels[i, j+5] = wood
-        pixels[i, j+6] = wood
-        pixels[i+2, j+2] = wood
-        pixels[i-2, j+2] = wood
-        pixels[i+1, j+3] = wood
-        pixels[i-1, j+3] = wood
+        for i in range(2):
+            for j in range(4):
+                if pixels[x + i, y + j] != dayLand:
+                    isValid = False
 
-        pixels[i+1, j+1] = leaves
-        pixels[i+2, j+1] = leaves
-        pixels[i+3, j+1] = leaves
-        pixels[i-1, j+1] = leaves
-        pixels[i-2, j+1] = leaves
-        pixels[i-3, j+1] = leaves
-        pixels[i+1, j] = leaves
-        pixels[i+2, j] = leaves
-        pixels[i-1, j] = leaves
-        pixels[i-2, j] = leaves
-        pixels[i, j-1] = leaves
-        pixels[i+1, j-1] = leaves
-        pixels[i+2, j-1] = leaves
-        pixels[i-1, j-1] = leaves
-        pixels[i-2, j-1] = leaves
-        pixels[i, j-2] = leaves
-        pixels[i+1, j-2] = leaves
-        pixels[i-1, j-2] = leaves
+            x = x + 1
+            y = y + 1
+
+            if isValid:
+
+                pixels[x, y] = wood
+                pixels[x, y+1] = wood
+                pixels[x, y+2] = wood
+                pixels[x, y+3] = wood
+                pixels[x, y+4] = wood
+                pixels[x, y+5] = wood
+                pixels[x, y+6] = wood
+                pixels[x+2, y+2] = wood
+                pixels[x-2, y+2] = wood
+                pixels[x+1, y+3] = wood
+                pixels[x-1, y+3] = wood
+
+                pixels[x+1, y+1] = leaves
+                pixels[x+2, y+1] = leaves
+                pixels[x+3, y+1] = leaves
+                pixels[x-1, y+1] = leaves
+                pixels[x-2, y+1] = leaves
+                pixels[x-3, y+1] = leaves
+                pixels[x+1, y] = leaves
+                pixels[x+2, y] = leaves
+                pixels[x-1, y] = leaves
+                pixels[x-2, y] = leaves
+                pixels[x, y-1] = leaves
+                pixels[x+1, y-1] = leaves
+                pixels[x+2, y-1] = leaves
+                pixels[x-1, y-1] = leaves
+                pixels[x-2, y-1] = leaves
+                pixels[x, y-2] = leaves
+                pixels[x+1, y-2] = leaves
+                pixels[x-1, y-2] = leaves
 
 
 if __name__ == "__main__":
@@ -119,6 +127,8 @@ if __name__ == "__main__":
     img  = Image.new( mode = "RGB", size = (int(size), int(size)), color = (0, 0, 0) )
     pixels = img.load()
 
+    treeCounter = 0
+
     # Using the snoise2 function and sliders above, generate the pixel height map values
     for i in range(int(size)):
         for j in range(int(size)):
@@ -140,6 +150,9 @@ if __name__ == "__main__":
             elif noiseValue < 0.3:
                 if day == 1:
                     pixels[i, j] = dayLand
+                    if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0:
+                        addTrees(img, size, i, j, treeCounter)
+                        treeCounter += 1
                 else:
                     pixels[i, j] = nightLand
             elif noiseValue < 0.5:
@@ -154,6 +167,5 @@ if __name__ == "__main__":
                     pixels[i, j] = nightSnow
 
     #View the Image
-    addTrees(img)
     img.save("../../../new_map.png", "PNG")  
     img.show()

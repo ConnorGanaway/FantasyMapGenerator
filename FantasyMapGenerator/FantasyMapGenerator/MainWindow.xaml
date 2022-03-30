@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FantasyMapGenerator"
         mc:Ignorable="d"
         Title="FantasyMapGenerator" Height="600" Width="1000">
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -19,7 +20,6 @@
             <ColumnDefinition Width="581*"/>
             <ColumnDefinition Width="117*"/>
         </Grid.ColumnDefinitions>
-
 
         <Rectangle Grid.Column="3" HorizontalAlignment="Left" Height="500" Margin="300,20,0,0" Stroke="Black" Fill="Gray" VerticalAlignment="Top" Width="500" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
@@ -52,9 +52,10 @@
         <Label x:Name="OctavesName" Grid.Column="3" Content="Octaves" HorizontalAlignment="Left" Margin="65,125,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="PersistenceName" Grid.Column="3" Content="Persistence" HorizontalAlignment="Left" Margin="60,175,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="LacunarityName" Grid.Column="3" Content="Lacunarity" HorizontalAlignment="Left" Margin="60,225,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
         
 
-
-
     </Grid>
+    
+    
 </Window>

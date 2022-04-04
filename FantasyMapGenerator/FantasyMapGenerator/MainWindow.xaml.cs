@@ -46,7 +46,12 @@ namespace FantasyMapGenerator
             SizeInput.Text = "500";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Seed_Input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Generate_Button_Click(object sender, RoutedEventArgs e)
         {
             string tempSize;
             if (string.IsNullOrEmpty(SizeInput.Text))
@@ -122,31 +127,11 @@ namespace FantasyMapGenerator
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo = procStartInfo;
             proc.Start();
-
-            File.Copy("new_map.png", @fullPath);
-
-            System.Diagnostics.Debug.WriteLine(@fullPath);
-
-            Uri uri = new Uri(@fullPath, UriKind.Relative);
-            BitmapImage bmi = new BitmapImage(uri);
-            MapView.Source = bmi;
-            DataContext = new DataStuff(@fullPath);
         }
 
-        //TBD Generation Option (This is being used as a reset button for the values at the moment
         private void Trees_Checked(object sender, RoutedEventArgs e)
         {
             
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void DarkMode_Checked(object sender, RoutedEventArgs e)
@@ -162,7 +147,7 @@ namespace FantasyMapGenerator
             lacunarity.Value = 1.5;
         }
 
-        private void CheckBox_Checked_4(object sender, RoutedEventArgs e)
+        private void Buildings_Checked(object sender, RoutedEventArgs e)
         {
             string tempSize;
             if (string.IsNullOrEmpty(SizeInput.Text))
@@ -211,7 +196,6 @@ namespace FantasyMapGenerator
 
                 tempSeed = new String(stringChars);
             }
-
 
             string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"trees\":\"" + tempTrees + "\",\n\t\"paths\":\"" + tempPaths + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
 
@@ -296,6 +280,16 @@ namespace FantasyMapGenerator
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void Import_Settings_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Create_Report_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Newtonsoft.Json.Linq;
 
 namespace FantasyMapGenerator
 {
@@ -105,7 +106,7 @@ namespace FantasyMapGenerator
             string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"trees\":\"" + tempTrees + "\",\n\t\"paths\":\"" + tempPaths + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
 
             File.WriteAllTextAsync("settingsTemp.json", str);
-
+            SeedInput.Text = tempSeed;
 
             DateTime time = DateTime.Now;
             tempSeed = tempSeed + time.ToString("h:mm:ss tt");
@@ -282,8 +283,168 @@ namespace FantasyMapGenerator
             
         }
 
+        public bool validSettingsFile(string content)
+        {
+
+            var myJsonString = File.ReadAllText(content);
+            var myJObject = JObject.Parse(myJsonString);
+            bool invalidJson = false;
+
+            if(myJObject.SelectToken("size") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("size").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("scale") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("scale").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("octaves") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("octaves").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("persistence") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("persistence").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("lacunarity") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("lacunarity").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("day") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("day").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("trees") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("trees").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("paths") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("paths").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if (myJObject.SelectToken("seed") != null)
+            {
+                Console.WriteLine(myJObject.SelectToken("seed").Value<string>());
+            }
+            else
+            {
+                invalidJson = true;
+            }
+
+            if(invalidJson == false)
+            {
+                SizeInput.Text = Convert.ToString(myJObject.SelectToken("size"));
+                scale.Value = Convert.ToDouble(myJObject.SelectToken("scale"));
+                octaves.Value = Convert.ToDouble(myJObject.SelectToken("octaves"));
+                persistence.Value = Convert.ToDouble(myJObject.SelectToken("persistence"));
+                lacunarity.Value = Convert.ToDouble(myJObject.SelectToken("lacunarity"));
+                
+                if(Int32.Parse(Convert.ToString(myJObject.SelectToken("day"))) == 0)
+                {
+                    DarkMode.IsChecked = true;
+                }
+                else
+                {
+                    DarkMode.IsChecked = false; 
+                }
+
+                if (Int32.Parse(Convert.ToString(myJObject.SelectToken("trees"))) == 1)
+                {
+                    Trees.IsChecked = true;
+                }
+                else
+                {
+                    Trees.IsChecked = false;
+                }
+
+                if (Int32.Parse(Convert.ToString(myJObject.SelectToken("paths"))) == 1)
+                {
+                    Paths.IsChecked = true;
+                }
+                else
+                {
+                    Paths.IsChecked = false;
+                }
+
+                SeedInput.Text = Convert.ToString(myJObject.SelectToken("seed"));
+            }
+            return invalidJson;
+        }
+
         private void Import_Settings_Button_Click(object sender, RoutedEventArgs e)
         {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "JSON File (*.json)|*.json";
+                openFileDialog.Title = "Import Settings File";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                DialogResult result = openFileDialog.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                    }
+
+                    if (validSettingsFile(filePath) == false)
+                    {
+                        Console.WriteLine("Invalid syntax for settings file\n");
+                    }
+                }
+            }
 
         }
 

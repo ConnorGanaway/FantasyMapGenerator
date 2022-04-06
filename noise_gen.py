@@ -86,6 +86,8 @@ if __name__ == "__main__":
     octaves = None               # Level of overall detail
     persistence = None           # Adjusts frequency
     lacunarity = None            # Adjusts amplitude
+    trees = None                 # Toggle for including Trees or not
+    paths = None                 # Toogle for including Paths or not
 
     #json file
     settingsFile = sys.argv[1]
@@ -100,6 +102,8 @@ if __name__ == "__main__":
     persistence = float(data["persistence"])
     lacunarity = float(data["lacunarity"])
     day = int(data["day"])
+    trees = int(data["trees"])
+    paths = int(data["paths"]) # Placeholder for paths later on
     user_seed = str(data["seed"])
 
     # Debug Statements
@@ -109,7 +113,9 @@ if __name__ == "__main__":
     print("Persistence:", persistence)
     print("Lacunarity: ", lacunarity)
     print("Day: ", day)
-    print("User Input Seed: ", user_seed)   #This is a placeholder for later on in the project
+    print("Trees: ", trees)
+    print("Paths: ", paths) # Placeholder for paths later on
+    print("User Input Seed: ", user_seed)
 
 
     f.close()
@@ -150,7 +156,7 @@ if __name__ == "__main__":
             elif noiseValue < 0.3:
                 if day == 1:
                     pixels[i, j] = dayLand
-                    if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0:
+                    if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0 and trees == 1:
                         addTrees(img, size, i, j, treeCounter)
                         treeCounter += 1
                 else:
@@ -167,5 +173,5 @@ if __name__ == "__main__":
                     pixels[i, j] = nightSnow
 
     #View the Image
-    img.save("../../../new_map.png", "PNG")  
+    img.save("new_map.png", "PNG")  
     img.show()

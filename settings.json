@@ -1,9 +1,11 @@
 {
-	"size":"500",
+	"size":"200",
 	"scale":"100.0",
 	"octaves":"6",
 	"persistence":"0.5",	
 	"lacunarity":"1.75",
 	"day":"1",
+	"trees":"0",
+	"paths":"0",
 	"seed":"random_seed_value"
 }

@@ -76,6 +76,10 @@ def addTrees(img, size, x, y, treeCounter):
                 pixels[x+1, y-2] = leaves
                 pixels[x-1, y-2] = leaves
 
+def checkUserCreatedSeed(user_seed):
+    if user_seed[-1] == "_" and user_seed[-2] == "_" and user_seed[-3] == "_" and user_seed[-4] == "_" and user_seed[-4] == "_":
+        return False
+    return True
 
 if __name__ == "__main__":
 
@@ -125,9 +129,13 @@ if __name__ == "__main__":
     computer_seed = random.random()
     print("Computer Seed: ", computer_seed)
 
-    print("hash: ", hash(user_seed))
-    final_seed = hash(user_seed) * computer_seed * pow(10, -18)
-    print("hash: ", final_seed)
+    # Check if the seed is computer generated or was entered by the user
+    if checkUserCreatedSeed(user_seed) == False:
+        final_seed = computer_seed
+    else:
+        final_seed = hash(user_seed) * pow(10, -18)
+
+    
 
     #Create a new blank image and save the pixels
     img  = Image.new( mode = "RGB", size = (int(size), int(size)), color = (0, 0, 0) )

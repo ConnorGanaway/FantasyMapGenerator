@@ -3,6 +3,16 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
+- Version 0.7
+    - Redesigned GUI
+        - Image will no longer be apart of the app
+    - Ability to import / export settings file
+    - More temporary generation settings
+        - Paths Checkbox
+        - Buildings Checkbox
+    - When a random seed is used it will display in the textbox
+    - Improved map file reference when interfacing with the generation script
+
 - Version 0.6
     - Function to add a single Tree
 

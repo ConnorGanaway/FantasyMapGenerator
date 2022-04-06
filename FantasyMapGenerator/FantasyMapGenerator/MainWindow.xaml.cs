@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -450,7 +452,36 @@ namespace FantasyMapGenerator
 
         private void Create_Report_Button_Click(object sender, RoutedEventArgs e)
         {
+            // Displays a SaveFileDialog so the user can save the Image
+            // assigned to Button2.
+            Stream stream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "PNG Image|*.png|JPeg Image|*.jpg";
+            saveFileDialog1.Title = "Save an Image File";
 
+            DialogResult result = saveFileDialog1.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                if (saveFileDialog1.FileName != "")
+                {
+                    // Saves the Image via a FileStream created by the OpenFile method.
+                    System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog1.OpenFile();
+                    System.Drawing.Image newImage = System.Drawing.Image.FromFile("new_map.png");
+                    switch (saveFileDialog1.FilterIndex)
+                    {
+                        case 1:
+                            newImage.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
+                            break;
+
+                        case 2:
+                            newImage.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            break;
+                    }
+
+                    fs.Close();
+                }
+            }
         }
     }
 }

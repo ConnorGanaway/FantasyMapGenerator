@@ -25,7 +25,7 @@ nightSnow = (105, 105, 105)
 wood = (140, 98, 56)
 leaves = (140, 198, 62)
 
-def addTrees(img, size, x, y, treeCounter):
+def addTrees(img, x, y, treeCounter):
 
     pixels = img.load()
     isValid = True
@@ -75,6 +75,103 @@ def addTrees(img, size, x, y, treeCounter):
                 pixels[x, y-2] = leaves
                 pixels[x+1, y-2] = leaves
                 pixels[x-1, y-2] = leaves
+
+def create_line(segment_length):
+    slope = random.randint(1, 6)
+    points = []
+
+    # Slope = 0
+    if slope == 1:
+        for i in range(int(segment_length)):
+            points.append([i,0])
+    
+    # Slope = 1
+    elif slope == 2:
+        for i in range(int(segment_length)):
+            points.append([i,i])
+
+    # Slope = -1
+    elif slope == 3:
+        for i in range(int(segment_length)):
+            points.append([i,-i])
+    
+    # Slope = 2
+    elif slope == 4:
+        for i in range(int(segment_length)):
+            points.append([i,i*2])
+
+    # Slope = -2
+    elif slope == 5:
+        for i in range(int(segment_length)):
+            points.append([i,i*-2])
+    
+    # Slope = infinity
+    elif slope == 6:
+        for i in range(int(segment_length)):
+            points.append([0,i])
+
+    return points
+
+
+def create_parabola(segment_length):
+    function_choice = random.randint(1, 3)
+
+def create_transcendental(segment_length):
+    function_choice = random.randint(1, 3)
+
+def addPaths(img, size, x, y, pathCounter):
+    pixels = img.load()
+    isValid = True
+
+    x = x - 1
+    y = y - 1
+    black = (0, 0, 0)
+    path_length = size / 10
+    segment_length = path_length / 10
+
+    if pathCounter <= 5:
+
+        for i in range(2):
+            for j in range(4):
+                if pixels[x + i, y + j] != dayLand:
+                    isValid = True
+
+        x = x + 1
+        y = y + 1
+        new_x = None
+        new_y = None
+        x_offset = None
+        y_offset = None
+
+        if isValid:
+
+            for i in range(10):
+
+                # Choose which function to use for the segment of the overall path
+                function_choice = random.randint(1, 3)
+
+                if function_choice == 1:
+                    segment = create_line(segment_length)
+                elif function_choice == 2:
+                    segment = create_line(segment_length)
+                elif function_choice == 3:
+                    segment = create_line(segment_length)
+
+                # The create functions will return a list of offsets from the current pixel
+                # Those offsets will be colored black
+                for p in segment:
+                    x_offset = p[0]
+                    y_offset = p[1]
+                    new_x = x + x_offset
+                    new_y = y + y_offset
+                    pixels[new_x, new_y] = black
+
+                # Then we update the endpoint of the segment as the new starting point
+                x = new_x
+                y = new_y
+                print("new_x: ", new_x, "new_y: ", new_y)
+    #print("Path Added")
+                
 
 def checkUserCreatedSeed(user_seed):
     if user_seed[-1] == "_" and user_seed[-2] == "_" and user_seed[-3] == "_" and user_seed[-4] == "_" and user_seed[-4] == "_":
@@ -142,6 +239,7 @@ if __name__ == "__main__":
     pixels = img.load()
 
     treeCounter = 0
+    pathCounter = 0
 
     # Using the snoise2 function and sliders above, generate the pixel height map values
     for i in range(int(size)):
@@ -165,8 +263,11 @@ if __name__ == "__main__":
                 if day == 1:
                     pixels[i, j] = dayLand
                     if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0 and trees == 1:
-                        addTrees(img, size, i, j, treeCounter)
+                        addTrees(img, i, j, treeCounter)
                         treeCounter += 1
+                    if i + 3 < size and i - 3 > 0 and j + 3 < size and j - 3 > 0 and paths == 1:
+                        addPaths(img, size, i, j, pathCounter)
+                        pathCounter += 1
                 else:
                     pixels[i, j] = nightLand
             elif noiseValue < 0.5:

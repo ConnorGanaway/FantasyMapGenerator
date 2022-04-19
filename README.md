@@ -3,6 +3,9 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
+- Version 0.8
+    - Improved Path generation
+
 - Version 0.7
     - Redesigned GUI
         - Image will no longer be apart of the app

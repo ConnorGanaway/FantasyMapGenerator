@@ -123,21 +123,12 @@ def addPaths(img, size, x, y, pathCounter):
     pixels = img.load()
     isValid = True
 
-    x = x - 1
-    y = y - 1
     black = (0, 0, 0)
     path_length = size / 10
     segment_length = path_length / 10
 
-    if pathCounter <= 5:
+    if pathCounter % (15) == 0:
 
-        for i in range(2):
-            for j in range(4):
-                if pixels[x + i, y + j] != dayLand:
-                    isValid = True
-
-        x = x + 1
-        y = y + 1
         new_x = None
         new_y = None
         x_offset = None
@@ -145,32 +136,24 @@ def addPaths(img, size, x, y, pathCounter):
 
         if isValid:
 
+            cur_x = x
+            cur_y = y
             for i in range(10):
 
-                # Choose which function to use for the segment of the overall path
-                function_choice = random.randint(1, 3)
+                #Return the slope points of the segment of the path
+                segment = create_line(path_length)
 
-                if function_choice == 1:
-                    segment = create_line(segment_length)
-                elif function_choice == 2:
-                    segment = create_line(segment_length)
-                elif function_choice == 3:
-                    segment = create_line(segment_length)
-
-                # The create functions will return a list of offsets from the current pixel
-                # Those offsets will be colored black
+                #Assign these points the color black and then move the starting point
                 for p in segment:
                     x_offset = p[0]
                     y_offset = p[1]
-                    new_x = x + x_offset
-                    new_y = y + y_offset
-                    pixels[new_x, new_y] = black
+                    new_x = cur_x + x_offset
+                    new_y = cur_y + y_offset
 
-                # Then we update the endpoint of the segment as the new starting point
-                x = new_x
-                y = new_y
-                print("new_x: ", new_x, "new_y: ", new_y)
-    #print("Path Added")
+                    if abs(new_x) < size and abs(new_y) < size:
+                        pixels[new_x, new_y] = black
+                    cur_x = new_x
+                    cur_y = new_y
                 
 
 def checkUserCreatedSeed(user_seed):
@@ -262,12 +245,12 @@ if __name__ == "__main__":
             elif noiseValue < 0.3:
                 if day == 1:
                     pixels[i, j] = dayLand
-                    if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0 and trees == 1:
-                        addTrees(img, i, j, treeCounter)
-                        treeCounter += 1
                     if i + 3 < size and i - 3 > 0 and j + 3 < size and j - 3 > 0 and paths == 1:
                         addPaths(img, size, i, j, pathCounter)
                         pathCounter += 1
+                    if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0 and trees == 1:
+                        addTrees(img, i, j, treeCounter)
+                        treeCounter += 1
                 else:
                     pixels[i, j] = nightLand
             elif noiseValue < 0.5:

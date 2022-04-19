@@ -88,6 +88,12 @@ namespace FantasyMapGenerator
                 tempPaths = 1;
             }
 
+            int tempMask = 0;
+            if (Mask.IsChecked == true)
+            {
+                tempMask = 1;
+            }
+
             string tempSeed = SeedInput.Text;
             if (tempSeed == "")
             {
@@ -104,7 +110,7 @@ namespace FantasyMapGenerator
             }
 
 
-            string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"trees\":\"" + tempTrees + "\",\n\t\"paths\":\"" + tempPaths + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
+            string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"trees\":\"" + tempTrees + "\",\n\t\"paths\":\"" + tempPaths + "\",\n\t\"mask\":\"" + tempMask + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
 
             File.WriteAllTextAsync("settingsTemp.json", str);
             SeedInput.Text = tempSeed;
@@ -128,85 +134,12 @@ namespace FantasyMapGenerator
 
         private void Paths_Checked(object sender, RoutedEventArgs e)
         {
-            scale.Value = 100;
-            octaves.Value = 7;
-            persistence.Value = 0.5;
-            lacunarity.Value = 1.5;
+            
         }
 
-        private void Buildings_Checked(object sender, RoutedEventArgs e)
+        private void Mask_Checked(object sender, RoutedEventArgs e)
         {
-            string tempSize;
-            if (string.IsNullOrEmpty(SizeInput.Text))
-            {
-                tempSize = "500";
-            }
-            else
-            {
-                tempSize = SizeInput.Text;
-            }
-            double tempScale = scale.Value;
-            double tempOctaves = octaves.Value;
-            double tempPersistence = persistence.Value;
-            double tempLacunarity = lacunarity.Value;
 
-
-            int tempDarkMode = 1;
-            if (DarkMode.IsChecked == true)
-            {
-                tempDarkMode = 0;
-            }
-
-            int tempTrees = 0;
-            if (Trees.IsChecked == true)
-            {
-                tempTrees = 1;
-            }
-
-            int tempPaths = 0;
-            if (Paths.IsChecked == true)
-            {
-                tempPaths = 1;
-            }
-
-            string tempSeed = SeedInput.Text;
-            if (tempSeed == "")
-            {
-                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                var stringChars = new char[16];
-                var random = new Random();
-
-                for (int i = 0; i < stringChars.Length; i++)
-                {
-                    stringChars[i] = chars[random.Next(chars.Length)];
-                }
-
-                tempSeed = new String(stringChars);
-            }
-
-            string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"trees\":\"" + tempTrees + "\",\n\t\"paths\":\"" + tempPaths + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
-
-            Stream stream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "JSON File (*.json)|*.json";
-            saveFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.Title = "Export Settings File";
-
-            DialogResult result = saveFileDialog1.ShowDialog();
-
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-                if ((stream = saveFileDialog1.OpenFile()) != null)
-                {
-                    // Code to write the stream goes here.
-                    byte[] byteArray = Encoding.ASCII.GetBytes(str);
-                    MemoryStream mem_stream = new MemoryStream(byteArray);
-
-
-                    stream.WriteAsync(byteArray, 0, byteArray.Length);  
-                    stream.Close();
-                }
-            }
         }
 
         private void scale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -438,6 +371,81 @@ namespace FantasyMapGenerator
                     }
 
                     fs.Close();
+                }
+            }
+        }
+
+        private void Export_Settings_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string tempSize;
+            if (string.IsNullOrEmpty(SizeInput.Text))
+            {
+                tempSize = "500";
+            }
+            else
+            {
+                tempSize = SizeInput.Text;
+            }
+            double tempScale = scale.Value;
+            double tempOctaves = octaves.Value;
+            double tempPersistence = persistence.Value;
+            double tempLacunarity = lacunarity.Value;
+
+
+            int tempDarkMode = 1;
+            if (DarkMode.IsChecked == true)
+            {
+                tempDarkMode = 0;
+            }
+
+            int tempTrees = 0;
+            if (Trees.IsChecked == true)
+            {
+                tempTrees = 1;
+            }
+
+            int tempPaths = 0;
+            if (Paths.IsChecked == true)
+            {
+                tempPaths = 1;
+            }
+
+            string tempSeed = SeedInput.Text;
+            if (tempSeed == "")
+            {
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                var stringChars = new char[16];
+                var random = new Random();
+
+                for (int i = 0; i < stringChars.Length; i++)
+                {
+                    stringChars[i] = chars[random.Next(chars.Length)];
+                }
+
+                tempSeed = new String(stringChars);
+            }
+
+            string str = "{\n\t\"size\":\"" + tempSize + "\",\n\t\"scale\":\"" + tempScale + "\",\n\t\"octaves\":\"" + tempOctaves + "\",\n\t\"persistence\":\"" + tempPersistence + "\",\n\t\"lacunarity\":\"" + tempLacunarity + "\",\n\t\"day\":\"" + tempDarkMode + "\",\n\t\"trees\":\"" + tempTrees + "\",\n\t\"paths\":\"" + tempPaths + "\",\n\t\"seed\":\"" + tempSeed + "\"\n}";
+
+            Stream stream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JSON File (*.json)|*.json";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.Title = "Export Settings File";
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                if ((stream = saveFileDialog1.OpenFile()) != null)
+                {
+                    // Code to write the stream goes here.
+                    byte[] byteArray = Encoding.ASCII.GetBytes(str);
+                    MemoryStream mem_stream = new MemoryStream(byteArray);
+
+
+                    stream.WriteAsync(byteArray, 0, byteArray.Length);
+                    stream.Close();
                 }
             }
         }

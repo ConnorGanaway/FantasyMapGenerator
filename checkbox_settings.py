@@ -39,24 +39,24 @@ def addTrees(img, x, y, treeCounter):
                 pixels[x+1, y+3] = palet.wood
                 pixels[x-1, y+3] = palet.wood
 
-                pixels[x+1, y+1] = palet.wood
-                pixels[x+2, y+1] = palet.wood
-                pixels[x+3, y+1] = palet.wood
-                pixels[x-1, y+1] = palet.wood
-                pixels[x-2, y+1] = palet.wood
-                pixels[x-3, y+1] = palet.wood
-                pixels[x+1, y] = palet.wood
-                pixels[x+2, y] = palet.wood
-                pixels[x-1, y] = palet.wood
-                pixels[x-2, y] = palet.wood
-                pixels[x, y-1] = palet.wood
-                pixels[x+1, y-1] = palet.wood
-                pixels[x+2, y-1] = palet.wood
-                pixels[x-1, y-1] = palet.wood
-                pixels[x-2, y-1] = palet.wood
-                pixels[x, y-2] = palet.wood
-                pixels[x+1, y-2] = palet.wood
-                pixels[x-1, y-2] = palet.wood
+                pixels[x+1, y+1] = palet.leaves
+                pixels[x+2, y+1] = palet.leaves
+                pixels[x+3, y+1] = palet.leaves
+                pixels[x-1, y+1] = palet.leaves
+                pixels[x-2, y+1] = palet.leaves
+                pixels[x-3, y+1] = palet.leaves
+                pixels[x+1, y] = palet.leaves
+                pixels[x+2, y] = palet.leaves
+                pixels[x-1, y] = palet.leaves
+                pixels[x-2, y] = palet.leaves
+                pixels[x, y-1] = palet.leaves
+                pixels[x+1, y-1] = palet.leaves
+                pixels[x+2, y-1] = palet.leaves
+                pixels[x-1, y-1] = palet.leaves
+                pixels[x-2, y-1] = palet.leaves
+                pixels[x, y-2] = palet.leaves
+                pixels[x+1, y-2] = palet.leaves
+                pixels[x-1, y-2] = palet.leaves
 
 def create_line(segment_length):
     slope = random.randint(1, 6)

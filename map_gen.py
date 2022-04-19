@@ -96,11 +96,11 @@ if __name__ == "__main__":
             elif noiseValue < 0.3:
                 if day == 1:
                     pixels[i, j] = palet.dayLand
-                    if i + 3 < size and i - 3 > 0 and j + 3 < size and j - 3 > 0 and paths == 1:
+                    if paths == 1:
                         checkbox_settings.addPaths(img, size, i, j, pathCounter)
                         pathCounter += 1
-                    if i + 3 < size and i - 3 > 0 and j + 7 < size and j - 7 > 0 and trees == 1:
-                        checkbox_settings.addTrees(img, i, j, treeCounter)
+                    if trees == 1:
+                        checkbox_settings.addTrees(img, size, i, j, treeCounter)
                         treeCounter += 1
                 else:
                     pixels[i, j] = palet.nightLand

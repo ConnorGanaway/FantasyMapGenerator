@@ -7,56 +7,59 @@ import sys
 import json
 import palet
 
-def addTrees(img, x, y, treeCounter):
+def addTrees(img, size, x, y, treeCounter):
 
-    pixels = img.load()
-    isValid = True
+    # Check if the placement is in bounds
+    if x + 3 < size and x - 3 > 0 and y + 7 < size and y - 7 > 0:
 
-    x = x - 1
-    y = y - 1
+        pixels = img.load()
+        isValid = True
 
-    if treeCounter % 30 == 0:
+        x = x - 1
+        y = y - 1
 
-        for i in range(2):
-            for j in range(4):
-                if pixels[x + i, y + j] != palet.dayLand:
-                    isValid = False
+        if treeCounter % 30 == 0:
 
-            x = x + 1
-            y = y + 1
+            for i in range(2):
+                for j in range(4):
+                    if pixels[x + i, y + j] != palet.dayLand:
+                        isValid = False
 
-            if isValid:
+                x = x + 1
+                y = y + 1
 
-                pixels[x, y] = palet.wood
-                pixels[x, y+1] = palet.wood
-                pixels[x, y+2] = palet.wood
-                pixels[x, y+3] = palet.wood
-                pixels[x, y+4] = palet.wood
-                pixels[x, y+5] = palet.wood
-                pixels[x, y+6] = palet.wood
-                pixels[x+2, y+2] = palet.wood
-                pixels[x-2, y+2] = palet.wood
-                pixels[x+1, y+3] = palet.wood
-                pixels[x-1, y+3] = palet.wood
+                if isValid:
 
-                pixels[x+1, y+1] = palet.leaves
-                pixels[x+2, y+1] = palet.leaves
-                pixels[x+3, y+1] = palet.leaves
-                pixels[x-1, y+1] = palet.leaves
-                pixels[x-2, y+1] = palet.leaves
-                pixels[x-3, y+1] = palet.leaves
-                pixels[x+1, y] = palet.leaves
-                pixels[x+2, y] = palet.leaves
-                pixels[x-1, y] = palet.leaves
-                pixels[x-2, y] = palet.leaves
-                pixels[x, y-1] = palet.leaves
-                pixels[x+1, y-1] = palet.leaves
-                pixels[x+2, y-1] = palet.leaves
-                pixels[x-1, y-1] = palet.leaves
-                pixels[x-2, y-1] = palet.leaves
-                pixels[x, y-2] = palet.leaves
-                pixels[x+1, y-2] = palet.leaves
-                pixels[x-1, y-2] = palet.leaves
+                    pixels[x, y] = palet.wood
+                    pixels[x, y+1] = palet.wood
+                    pixels[x, y+2] = palet.wood
+                    pixels[x, y+3] = palet.wood
+                    pixels[x, y+4] = palet.wood
+                    pixels[x, y+5] = palet.wood
+                    pixels[x, y+6] = palet.wood
+                    pixels[x+2, y+2] = palet.wood
+                    pixels[x-2, y+2] = palet.wood
+                    pixels[x+1, y+3] = palet.wood
+                    pixels[x-1, y+3] = palet.wood
+
+                    pixels[x+1, y+1] = palet.leaves
+                    pixels[x+2, y+1] = palet.leaves
+                    pixels[x+3, y+1] = palet.leaves
+                    pixels[x-1, y+1] = palet.leaves
+                    pixels[x-2, y+1] = palet.leaves
+                    pixels[x-3, y+1] = palet.leaves
+                    pixels[x+1, y] = palet.leaves
+                    pixels[x+2, y] = palet.leaves
+                    pixels[x-1, y] = palet.leaves
+                    pixels[x-2, y] = palet.leaves
+                    pixels[x, y-1] = palet.leaves
+                    pixels[x+1, y-1] = palet.leaves
+                    pixels[x+2, y-1] = palet.leaves
+                    pixels[x-1, y-1] = palet.leaves
+                    pixels[x-2, y-1] = palet.leaves
+                    pixels[x, y-2] = palet.leaves
+                    pixels[x+1, y-2] = palet.leaves
+                    pixels[x-1, y-2] = palet.leaves
 
 def create_line(segment_length):
     slope = random.randint(1, 6)
@@ -95,40 +98,43 @@ def create_line(segment_length):
     return points
 
 def addPaths(img, size, x, y, pathCounter):
-    pixels = img.load()
-    isValid = True
 
-    black = (0, 0, 0)
-    path_length = size / 10
-    segment_length = path_length / 10
+    # Check if the placement is in bounds
+    if x + 3 < size and x - 3 > 0 and y + 3 < size and y - 3 > 0:
+        pixels = img.load()
+        isValid = True
 
-    if pathCounter % (15) == 0:
+        black = (0, 0, 0)
+        path_length = size / 10
+        segment_length = path_length / 10
 
-        new_x = None
-        new_y = None
-        x_offset = None
-        y_offset = None
+        if pathCounter % (15) == 0:
 
-        if isValid:
+            new_x = None
+            new_y = None
+            x_offset = None
+            y_offset = None
 
-            cur_x = x
-            cur_y = y
-            for i in range(10):
+            if isValid:
 
-                #Return the slope points of the segment of the path
-                segment = create_line(path_length)
+                cur_x = x
+                cur_y = y
+                for i in range(10):
 
-                #Assign these points the color black and then move the starting point
-                for p in segment:
-                    x_offset = p[0]
-                    y_offset = p[1]
-                    new_x = cur_x + x_offset
-                    new_y = cur_y + y_offset
+                    #Return the slope points of the segment of the path
+                    segment = create_line(path_length)
 
-                    if abs(new_x) < size and abs(new_y) < size:
-                        pixels[new_x, new_y] = black
-                    cur_x = new_x
-                    cur_y = new_y
+                    #Assign these points the color black and then move the starting point
+                    for p in segment:
+                        x_offset = p[0]
+                        y_offset = p[1]
+                        new_x = cur_x + x_offset
+                        new_y = cur_y + y_offset
+
+                        if abs(new_x) < size and abs(new_y) < size:
+                            pixels[new_x, new_y] = black
+                        cur_x = new_x
+                        cur_y = new_y
 
 
 def checkUserCreatedSeed(user_seed):

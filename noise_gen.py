@@ -1,5 +1,7 @@
+from tkinter import N
 from webbrowser import BackgroundBrowser
 from PIL import Image, ImageFilter
+import math
 import noise
 import numpy as np
 import random
@@ -24,6 +26,8 @@ nightSnow = (105, 105, 105)
 
 wood = (140, 98, 56)
 leaves = (140, 198, 62)
+darkgreen = (0,100,0)
+sandy = (210,180,140)
 
 def addTrees(img, x, y, treeCounter):
 
@@ -161,6 +165,16 @@ def checkUserCreatedSeed(user_seed):
         return False
     return True
 
+def globeMask(img, size):
+
+    Y = np.linspace(-1, 1, size)[None, :]*255
+    X = np.linspace(-1, 1, size)[:, None]*255
+    alpha = np.sqrt(X**2 + Y**2)
+    alpha = 255 - np.clip(0,255,alpha)
+
+    # Push that radial gradient transparency onto red image and save
+    img.putalpha(Image.fromarray(alpha.astype(np.uint8)))
+
 if __name__ == "__main__":
 
     seed = None                  # Main value used to randomize overall
@@ -187,7 +201,8 @@ if __name__ == "__main__":
     lacunarity = float(data["lacunarity"])
     day = int(data["day"])
     trees = int(data["trees"])
-    paths = int(data["paths"]) # Placeholder for paths later on
+    paths = int(data["paths"])
+    mask = int(data["mask"])
     user_seed = str(data["seed"])
 
     # Debug Statements
@@ -198,7 +213,8 @@ if __name__ == "__main__":
     print("Lacunarity: ", lacunarity)
     print("Day: ", day)
     print("Trees: ", trees)
-    print("Paths: ", paths) # Placeholder for paths later on
+    print("Paths: ", paths)
+    print("Mask: ", mask)
     print("User Input Seed: ", user_seed)
 
 
@@ -230,7 +246,7 @@ if __name__ == "__main__":
 
             #Range is -0.5 <= x <= 0.5 floating point value
             noiseValue = noise.snoise2(i/scale, j/scale, octaves=octaves, persistence=persistence, lacunarity=lacunarity, repeatx=size, repeaty=size, base=final_seed)
-            
+
             # Based on the value generate and color the pixel accordingly
             if noiseValue < -0.0275:
                 if day == 1:
@@ -263,6 +279,9 @@ if __name__ == "__main__":
                     pixels[i, j] = daySnow
                 else:
                     pixels[i, j] = nightSnow
+    if mask == 1:
+        globeMask(img, size)
+
 
     #View the Image
     img.save("new_map.png", "PNG")  

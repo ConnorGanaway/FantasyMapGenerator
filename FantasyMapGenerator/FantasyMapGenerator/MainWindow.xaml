@@ -5,41 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FantasyMapGenerator"
         mc:Ignorable="d"
-        Title="FantasyMapGenerator" Height="600" Width="734">
+        Title="FantasyMapGenerator" Height="486" Width="734">
 
-    <Grid Margin="0,0,0,3">
+    <Grid Margin="0,0,0,-6">
 
         <Label Content="Choose Size:" HorizontalAlignment="Left" Margin="100,35,0,0" VerticalAlignment="Top" FontSize="24" Height="42" Width="143"/>
         <ComboBox x:Name="SizeInput" HorizontalAlignment="Left" Margin="44,82,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="List_SelectionChanged" Height="34"/>
 
-        <Label Content="Enter Seed:" HorizontalAlignment="Left" Margin="106,142,0,0" VerticalAlignment="Top" FontSize="24" Height="42" Width="130"/>
-        <TextBox x:Name="SeedInput" HorizontalAlignment="Left" Margin="44,198,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="260" Height="34" TextChanged="Seed_Input_TextChanged" TextAlignment="Center" BorderBrush="Black" FontSize="24"/>
+        <Label Content="Enter Seed:" HorizontalAlignment="Left" Margin="483,35,0,0" VerticalAlignment="Top" FontSize="24" Height="42" Width="130"/>
+        <TextBox x:Name="SeedInput" HorizontalAlignment="Left" Margin="418,82,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="260" Height="34" TextChanged="Seed_Input_TextChanged" TextAlignment="Center" BorderBrush="Black" FontSize="24"/>
 
-        <CheckBox x:Name="DarkMode" Content="Dark Mode" HorizontalAlignment="Left" Margin="418,87,0,0" VerticalAlignment="Top" Checked="DarkMode_Checked" Height="15" Width="79"/>
-        <CheckBox x:Name="Paths" Content="Paths" HorizontalAlignment="Left" Margin="418,134,0,0" VerticalAlignment="Top" Checked="Paths_Checked" Height="15" Width="48"/>
-        <CheckBox x:Name="Trees" Content="Trees" HorizontalAlignment="Left" Margin="580,87,0,0" VerticalAlignment="Top" Checked="Trees_Checked" Height="15" Width="47"/>
-        <CheckBox x:Name="Buildings" Content="Buildings" HorizontalAlignment="Left" Margin="580,134,0,0" VerticalAlignment="Top" Checked="Buildings_Checked" Height="15" Width="78"/>
+        <CheckBox x:Name="DarkMode" Content="Dark Mode" HorizontalAlignment="Left" Margin="582,153,0,0" VerticalAlignment="Top" Checked="DarkMode_Checked" Height="15" Width="79"/>
+        <CheckBox x:Name="Paths" Content="Paths" HorizontalAlignment="Left" Margin="75,153,0,0" VerticalAlignment="Top" Checked="Paths_Checked" Height="15" Width="48"/>
+        <CheckBox x:Name="Trees" Content="Trees" HorizontalAlignment="Left" Margin="223,153,0,0" VerticalAlignment="Top" Checked="Trees_Checked" Height="15" Width="47"/>
+        <CheckBox x:Name="Mask" Content="Globe Mask" HorizontalAlignment="Left" Margin="434,153,0,0" VerticalAlignment="Top" Checked="Mask_Checked" Height="15" Width="94"/>
 
-        <Slider x:Name="scale" Value="100" Minimum="1" Maximum="200" HorizontalAlignment="Left" Margin="42,277,0,0" VerticalAlignment="Top" Width="260" ValueChanged="scale_ValueChanged" Height="18"/>
-        <Slider x:Name="octaves" IsSnapToTickEnabled="True" Ticks="2,3,4,5,6,7,8,9,10,11,12" Value="7" Minimum="2" Maximum="12" HorizontalAlignment="Left" Margin="44,336,0,0" VerticalAlignment="Top" Width="260" ValueChanged="octaves_ValueChanged" Height="18"/>
-        <Slider x:Name="persistence" Value="0.5" Minimum="0" Maximum="1" HorizontalAlignment="Left" Margin="398,332,0,0" VerticalAlignment="Top" Width="260" ValueChanged="persistence_ValueChanged" Height="18"/>
-        <Slider x:Name="lacunarity" Value="1.5" Minimum="1" Maximum="2" HorizontalAlignment="Left" Margin="398,273,0,0" VerticalAlignment="Top" Width="260" ValueChanged="lacunarity_ValueChanged" Height="18"/>
+        <Slider x:Name="scale" Value="100" Minimum="1" Maximum="200" HorizontalAlignment="Left" Margin="44,216,0,0" VerticalAlignment="Top" Width="260" ValueChanged="scale_ValueChanged" Height="18"/>
+        <Slider x:Name="octaves" IsSnapToTickEnabled="True" Ticks="2,3,4,5,6,7,8,9,10,11,12" Value="7" Minimum="2" Maximum="12" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="260" ValueChanged="octaves_ValueChanged" Height="18"/>
+        <Slider x:Name="persistence" Value="0.5" Minimum="0" Maximum="1" HorizontalAlignment="Left" Margin="418,280,0,0" VerticalAlignment="Top" Width="260" ValueChanged="persistence_ValueChanged" Height="18"/>
+        <Slider x:Name="lacunarity" Value="1.5" Minimum="1" Maximum="2" HorizontalAlignment="Left" Margin="418,216,0,0" VerticalAlignment="Top" Width="260" ValueChanged="lacunarity_ValueChanged" Height="18"/>
 
-        <Label x:Name="ScaleValue" Content="{Binding ElementName=scale, Path=Value}" HorizontalAlignment="Left" Margin="315,273,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
-        <Label x:Name="OctavesValue" Content="{Binding ElementName=octaves, Path=Value}" HorizontalAlignment="Left" Margin="320,332,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
-        <Label x:Name="PersistenceValue" Content="{Binding ElementName=persistence, Path=Value}" HorizontalAlignment="Left" Margin="663,332,0,0" VerticalAlignment="Top" Height="26" Width="26"/>
-        <Label x:Name="LacunarityValue" Content="{Binding ElementName=lacunarity, Path=Value}" HorizontalAlignment="Left" Margin="663,0,0,0" VerticalAlignment="Center" Height="26" Width="26"/>
+        <Label x:Name="ScaleValue" Content="{Binding ElementName=scale, Path=Value}" HorizontalAlignment="Left" Margin="309,212,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label x:Name="OctavesValue" Content="{Binding ElementName=octaves, Path=Value}" HorizontalAlignment="Left" Margin="318,276,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
+        <Label x:Name="PersistenceValue" Content="{Binding ElementName=persistence, Path=Value}" HorizontalAlignment="Left" Margin="683,276,0,0" VerticalAlignment="Top" Height="26" Width="26"/>
+        <Label x:Name="LacunarityValue" Content="{Binding ElementName=lacunarity, Path=Value}" HorizontalAlignment="Left" Margin="683,208,0,0" VerticalAlignment="Top" Height="26" Width="26"/>
 
-        <Button x:Name="Generate" Content="Generate" Click="Generate_Button_Click" HorizontalAlignment="Left" Margin="41,504,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
+        <Button x:Name="Generate" Content="Generate" Click="Generate_Button_Click" HorizontalAlignment="Left" Margin="41,401,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
 
-        <Label x:Name="ScaleName" Content="Scale" HorizontalAlignment="Left" Margin="156,251,0,0" VerticalAlignment="Top" Height="26" Width="36"/>
-        <Label x:Name="OctavesName" Content="Octaves" HorizontalAlignment="Left" Margin="148,300,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
-        <Label x:Name="PersistenceName" Content="Persistence" HorizontalAlignment="Left" Margin="494,238,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
-        <Label x:Name="LacunarityName" Content="Lacunarity" HorizontalAlignment="Left" Margin="498,308,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+        <Label x:Name="ScaleName" Content="Scale" HorizontalAlignment="Left" Margin="156,185,0,0" VerticalAlignment="Top" Height="26" Width="36"/>
+        <Label x:Name="OctavesName" Content="Octaves" HorizontalAlignment="Left" Margin="148,249,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
+        <Label x:Name="PersistenceName" Content="Persistence" HorizontalAlignment="Left" Margin="516,185,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
+        <Label x:Name="LacunarityName" Content="Lacunarity" HorizontalAlignment="Left" Margin="516,249,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
 
-        <Button x:Name="Import_Settings" Content="Import Settings" Click="Import_Settings_Button_Click" HorizontalAlignment="Left" Margin="41,436,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
-        <Button x:Name="Export_Settings" Content="Export Settings" Click="Import_Settings_Button_Click" HorizontalAlignment="Left" Margin="41,436,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
-        <Button x:Name="Create_Report" Content="Save Map" Click="Create_Report_Button_Click" HorizontalAlignment="Left" Margin="418,504,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
+        <Button x:Name="Import_Settings" Content="Import Settings" Click="Import_Settings_Button_Click" HorizontalAlignment="Left" Margin="41,333,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
+        <Button x:Name="Export_Settings" Content="Export Settings" Click="Export_Settings_Button_Click" HorizontalAlignment="Left" Margin="418,333,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
+        <Button x:Name="Create_Report" Content="Save Map" Click="Create_Report_Button_Click" HorizontalAlignment="Left" Margin="418,401,0,0" VerticalAlignment="Top" Height="34" Width="260" FontSize="24" FontFamily="Segoe UI"/>
 
 
 

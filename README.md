@@ -3,6 +3,10 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
+- Version 1.0
+    - Reorganized Checkboxes on UI
+    - All features planned are implemented
+
 - Version 0.9
     - Implemented Globe Mask for the Map
 

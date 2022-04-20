@@ -3,6 +3,9 @@ A desktop application for generating fantasy maps for table top role playing gam
 
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
+- Version 1.0.2
+  - Paths will now be connected instead of random dots
+
 - Version 1.0.1
     - Renamed "noise_gen.py" to "map_gen.py"
     - Moved checkbox functions and color palet to seperate files

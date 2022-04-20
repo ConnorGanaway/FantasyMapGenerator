@@ -96,9 +96,6 @@ if __name__ == "__main__":
             elif noiseValue < 0.3:
                 if day == 1:
                     pixels[i, j] = palet.dayLand
-                    if paths == 1:
-                        checkbox_settings.addPaths(img, size, i, j, pathCounter)
-                        pathCounter += 1
                     if trees == 1:
                         checkbox_settings.addTrees(img, size, i, j, treeCounter)
                         treeCounter += 1
@@ -114,6 +111,11 @@ if __name__ == "__main__":
                     pixels[i, j] = palet.daySnow
                 else:
                     pixels[i, j] = palet.nightSnow
+
+    # Add paths and mask after the base image is created
+    if paths == 1:
+        checkbox_settings.addPaths(img, size, size/2, size/2, pathCounter)
+        pathCounter += 1
     if mask == 1:
         img = checkbox_settings.globeMask(img, size)
 

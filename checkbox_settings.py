@@ -99,43 +99,67 @@ def create_line(segment_length):
 
 def addPaths(img, size, x, y, pathCounter):
 
-    # Check if the placement is in bounds
     if x + 3 < size and x - 3 > 0 and y + 3 < size and y - 3 > 0:
         pixels = img.load()
         isValid = True
 
         black = (0, 0, 0)
-        path_length = size / 10
-        segment_length = path_length / 10
+        numTrails = 0
+        new_x = None
+        new_y = None
 
-        if pathCounter % (15) == 0:
+        while(numTrails < 25):
+            # Choose two random points
+            x1 = random.randint(1, size - 1)
+            y1 = random.randint(1, size - 1)
+            x2 = random.randint(1, size - 1)
+            y2 = random.randint(1, size - 1)
 
-            new_x = None
-            new_y = None
-            x_offset = None
-            y_offset = None
+            # Check the points don't equal each other
+            if x1 == x2 or y1 == y2:
+                continue
 
-            if isValid:
+            # Calculate the difference between points
+            run = (x2 - x1)
+            rise = (y2 - y1)
 
-                cur_x = x
-                cur_y = y
-                for i in range(10):
+            # Assign a moving point for coloring
+            new_x = x1
+            new_y = y1
 
-                    #Return the slope points of the segment of the path
-                    segment = create_line(path_length)
+            # Only place the paths on grass
+            if pixels[x1, y1] == palet.dayLand and pixels[x2, y2] == palet.dayLand:
+                placing = True
+                pixelsPlaced = False
+                while(placing):
+                    if new_x == x2 or new_y == y2 or abs(new_x) >= size or abs(new_y) >= size:
+                        placing = False
+                        continue
 
-                    #Assign these points the color black and then move the starting point
-                    for p in segment:
-                        x_offset = p[0]
-                        y_offset = p[1]
-                        new_x = cur_x + x_offset
-                        new_y = cur_y + y_offset
+                    if pixels[new_x, new_y] != palet.dayWater:
+                        # Keep track of if a trail is being placed
+                        pixelsPlaced = True
+                        pixels[new_x, new_y] = black
 
-                        if abs(new_x) < size and abs(new_y) < size:
-                            pixels[new_x, new_y] = black
-                        cur_x = new_x
-                        cur_y = new_y
+                    # Get the next point
+                    new_x = new_x + round(run / 100) + 1
+                    new_y = new_y + round(rise / 100) + 1
 
+                    # Add some randomnss so the line is not perfectly straight
+                    randomness = random.randint(1,100)
+                    if randomness < 5:
+                        new_x = new_x + 2
+                    elif randomness > 6 and randomness < 10:
+                        new_y = new_y + 2
+                    elif randomness > 11 and randomness < 15:
+                        new_x = new_x - 2
+                    elif randomness > 16 and randomness < 20:
+                        new_y = new_y - 2
+
+                if pixelsPlaced:
+                    numTrails = numTrails + 1
+
+        print("Paths done")
 
 def checkUserCreatedSeed(user_seed):
     if user_seed[-1] == "_" and user_seed[-2] == "_" and user_seed[-3] == "_" and user_seed[-4] == "_" and user_seed[-4] == "_":

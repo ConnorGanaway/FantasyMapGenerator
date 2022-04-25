@@ -4,7 +4,7 @@ A desktop application for generating fantasy maps for table top role playing gam
 ![Python package](https://github.com/ConnorGanaway/FantasyMapGenerator/actions/workflows/actions.yml/badge.svg)
 
 - Version 1.0.3
-    - Trees will not be added after all inital pixels are colored (Pixel art was being pasted over)
+    - Trees will not be added until after all inital pixels are colored (Pixel art was being pasted over)
 
 - Version 1.0.2
     - Paths will now be connected instead of random dots

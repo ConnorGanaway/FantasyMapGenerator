@@ -162,14 +162,16 @@ def addPaths(img, size, x, y, pathCounter):
         print("Paths done")
 
 def checkUserCreatedSeed(user_seed):
-    if user_seed[-1] == "_" and user_seed[-2] == "_" and user_seed[-3] == "_" and user_seed[-4] == "_" and user_seed[-4] == "_":
+    if user_seed[-1] == "_" and user_seed[-2] == "_" and user_seed[-3] == "_" and user_seed[-4] == "_" and user_seed[-5] == "_":
         return False
     return True
 
 def globeMask(img, size):
 
-    Y = np.linspace(-1, 1, size)[None, :]*255
-    X = np.linspace(-1, 1, size)[:, None]*255
+    # Ensure scale and ratio of image is maintained 
+    Y = np.linspace(-1, 1, size)[None, :] * 255
+    X = np.linspace(-1, 1, size)[:, None] * 255
+
     alpha = np.sqrt(X**2 + Y**2)
     alpha = 255 - np.clip(0,255,alpha)
 
